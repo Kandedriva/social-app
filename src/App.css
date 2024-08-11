@@ -59,3 +59,26 @@
   padding-bottom: 5%;
   margin-bottom: 3%;
 }
+.image-container{
+  border: 1px solid;
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+}
+.image-container:hover{
+  border: 5px solid;
+  border-color: green;
+}
+.storeOpenButton{
+  border-radius: 10px;
+  border: 1px solid;
+  background-color: white;
+  color: green;
+  margin-left: 25%;
+  padding: 2px 5px 2px 5px;
+}
+.storeOpenButton:hover{
+  border: 1px solid;
+  border-color: green;
+  font-size: 15px;
+}

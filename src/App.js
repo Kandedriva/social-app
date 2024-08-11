@@ -3,12 +3,14 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Registration from './components/Registration';
 import Login from './components/Login';
+import Stores from './components/Stores';
 
 function App() {
   return (
     <>
     <Registration/>
     <Login/>
+    <Stores/>
     </>
     // <div className="App">
     //   <header className="App-header">

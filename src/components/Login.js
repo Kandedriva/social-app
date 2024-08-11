@@ -1,39 +1,39 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 
 function Login(){
-    const [loginUsername, setLogin] = useState({
-        username: "",
-        lpassword: ""
-    
-    })
+    const [username, setUserName] = useState("")
+    const [password, setPassword] = useState("")
  
-    function hanndlelogin(e){
-    let value = e.target.value;
-    let name = e.target.name;
-    setLogin({
-        ...loginUsername,
-        [name]: value
-    })
-
-    }
+function successUser(e){
+e.preventDefault();
+const loginUsername = {
+    username,
+    password
+}
+axios.post("http://localhost:5001/login", loginUsername)
+.then(res =>console.log(res.data))
+.catch( error => console.error("There is an Error", error))
+}
 
     return(
         <>
-         <form method="post">
+         <form onSubmit = {successUser} method="post">
             <div className="registration-container">
                 <div className="info-component">
                     <div className="title-container">
                     <h1 className="regis-header">Login</h1>
                     </div>
                     <div>
-                    <label className="reg-title">Email</label><br></br>
+                    <label className="reg-title">Username</label><br></br>
                     <input 
                     className="sign-input"  
-                    type="email" 
-                    placeholder="Enter email..." 
-                    size="70" name="email" 
-                    onClick={hanndlelogin}
+                    type="text" 
+                    placeholder="Enter your username..." 
+                    size="70" name="username" 
+                    value={username}
+                    onChange={e=>setUserName(e.target.value)}
                    
                     ></input>
                     </div>
@@ -49,7 +49,8 @@ function Login(){
                      size="70" 
                      name="password" 
                      autoComplete="none" 
-                     onClick={hanndlelogin}
+                     value={password}
+                     onChange={e =>setPassword(e.target.value)}
                    
                      ></input>
                     </div>

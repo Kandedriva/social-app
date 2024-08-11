@@ -3,12 +3,6 @@ import { useState } from "react";
 import axios from "axios";
 
 function Registration(){
-
-// const [register, setRegister] = useState({
-//     userName: "",
-//     email: "",
-//     password: ""
-// })
 const [username, setUsername] = useState("")
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
