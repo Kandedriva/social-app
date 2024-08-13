@@ -4,6 +4,8 @@ import bcrypt from "bcrypt"
 import passport from "passport";
 import session from "express-session";
 import { Strategy } from "passport-local";
+import path from "path";
+import { fileURLToPath } from "url";
 import env from "dotenv";
 import cors from "cors";
 import pg from "pg";
@@ -14,6 +16,7 @@ const port = 5001
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
+
 
 env.config();
 app.use(bodyParser.json())
@@ -28,6 +31,11 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 const db = new pg.Client({
   user: "postgres",
